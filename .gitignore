@@ -1,0 +1,64 @@
+# Flutter
+aura_app/.dart_tool/
+aura_app/.packages
+aura_app/build/
+aura_app/.flutter-plugins
+aura_app/.flutter-plugins-dependencies
+aura_app/.pub-cache/
+aura_app/.pub/
+
+# iOS
+aura_app/ios/Pods/
+aura_app/ios/.symlinks/
+aura_app/ios/Flutter/Flutter.framework
+aura_app/ios/Flutter/Flutter.podspec
+aura_app/ios/Flutter/Generated.xcconfig
+aura_app/ios/Flutter/app.flx
+aura_app/ios/Flutter/App.framework
+aura_app/ios/Flutter/ephemeral/
+aura_app/ios/Runner.xcworkspace/xcshareddata/
+aura_app/ios/ServiceDefinitions.json
+
+# Android (future)
+aura_app/android/.gradle/
+aura_app/android/app/debug/
+aura_app/android/app/profile/
+aura_app/android/app/release/
+**/android/**/GeneratedPluginRegistrant.java
+
+# Supabase
+supabase/.branches
+supabase/.temp/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+aura_app/.env
+aura_app/.env.*
+!aura_app/.env.example
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+**/.DS_Store
+*.xcuserstate
+
+# Misc
+*.log
+*.lock
+!pubspec.lock
+
+# Coverage
+coverage/
+*.lcov
+
+# bkit
+.bkit/

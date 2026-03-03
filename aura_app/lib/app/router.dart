@@ -1,0 +1,30 @@
+import 'package:go_router/go_router.dart';
+
+import '../features/home/home_screen.dart';
+import '../features/wardrobe/wardrobe_screen.dart';
+import '../features/match/match_screen.dart';
+import '../features/profile/profile_screen.dart';
+import 'shell_screen.dart';
+
+final appRouter = GoRouter(
+  initialLocation: '/home',
+  routes: [
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, shell) => ShellScreen(shell: shell),
+      branches: [
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/home', builder: (_, state) => const HomeScreen()),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/closet', builder: (_, state) => const WardrobeScreen()),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/match', builder: (_, state) => const MatchScreen()),
+        ]),
+        StatefulShellBranch(routes: [
+          GoRoute(path: '/my', builder: (_, state) => const ProfileScreen()),
+        ]),
+      ],
+    ),
+  ],
+);

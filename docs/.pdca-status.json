@@ -1,0 +1,79 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-03-03T07:16:51.257Z",
+  "activeFeatures": [
+    "_shared",
+    "health"
+  ],
+  "primaryFeature": "_shared",
+  "features": {
+    "_shared": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-03T07:16:21.078Z",
+        "lastUpdated": "2026-03-03T07:16:39.977Z"
+      },
+      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/_shared/types.ts"
+    },
+    "health": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-03T07:16:51.257Z",
+        "lastUpdated": "2026-03-03T07:16:51.257Z"
+      },
+      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/health/index.ts"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-03-02T15:01:14.196Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-03-03T07:16:51.257Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-03-03T07:16:21.078Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-03T07:16:25.296Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-03T07:16:34.172Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-03T07:16:39.977Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-03T07:16:51.257Z",
+      "feature": "health",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}

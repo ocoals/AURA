@@ -9,6 +9,7 @@ abstract final class AppTypography {
     fontFamily: 'Lobster',
     fontSize: 72,
     color: AppColors.white,
+    decoration: TextDecoration.none,
   );
 
   static TextStyle loginLogo = const TextStyle(

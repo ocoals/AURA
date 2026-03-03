@@ -120,9 +120,9 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 2.1 스플래시 화면
 
-- [ ] #1 스플래시 A: 인디고 그라디언트 (bgOnboard) + Lobster 72px 화이트 로고 → 1.5초
-- [ ] #2 스플래시 B: 소프트 그라디언트 (bgSoft) + Lobster 72px 인디고 로고 → 1초
-- [ ] 자동 전환 애니메이션 (fade)
+- [x] #1 스플래시 A: 삭제 (불필요)
+- [x] #2 스플래시 B: 소프트 그라디언트 (bgSoft) + Lobster 72px 인디고 로고 → 1초
+- [x] 자동 전환 애니메이션 (fade) — Splash A 삭제로 불필요
 
 ### 2.2 온보딩 (3장)
 
@@ -356,12 +356,13 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 5.3 탭바 구현
 
-- [ ] 플로팅 알약 탭바 (4탭)
+- [x] 플로팅 알약 탭바 (4탭)
   - `rgba(255,255,255,0.92)` + blur(24px), radius 22px
   - 아이콘 전용 (라벨 없음), 44x44 터치 타겟
-  - 활성: primary 배경 tint + filled 아이콘
+  - 활성: primary 배경 tint + filled 아이콘 + 슬라이딩 하이라이트 애니메이션
   - 비활성: 투명 + outline 아이콘
   - 하단 여백 고려 (Safe Area)
+  - 컴팩트 폭 (Center 정렬 + 고정 폭)
 
 ### 5.4 캐싱
 

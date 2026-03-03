@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
     // Navigate to home after 1 second
     Future.delayed(const Duration(seconds: 1), () {
       if (context.mounted) {
-        context.go('/home');
+        context.go('/onboarding');
       }
     });
 

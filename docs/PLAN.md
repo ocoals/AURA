@@ -37,8 +37,8 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 1.1 Flutter 프로젝트 셋업
 
-- [ ] `flutter create --org kr.aura aura` (iOS/Android)
-- [ ] 폴더 구조 설정 (feature-first)
+- [x] `flutter create --org kr.aura aura` (iOS/Android)
+- [x] 폴더 구조 설정 (feature-first)
   ```
   lib/
   ├── app/           # 앱 진입점, 라우팅, 테마
@@ -52,13 +52,13 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
   │   └── billing/
   └── shared/        # 공유 위젯, 모델
   ```
-- [ ] 핵심 패키지 설치
+- [x] 핵심 패키지 설치
   - 상태 관리: `flutter_riverpod`
   - 라우팅: `go_router`
   - HTTP: `supabase_flutter`
   - 이미지: `cached_network_image`, `image_picker`
   - 로컬 DB: `sqflite` (캐싱용)
-- [ ] 디자인 시스템 토큰 코드화
+- [x] 디자인 시스템 토큰 코드화
   - 컬러 (primary #4F46E5, neutral, glass)
   - 타이포 (Lobster + Noto Sans KR)
   - bgSoft / bgOnboard 그라디언트
@@ -66,35 +66,35 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 1.2 Supabase 프로젝트 & DB
 
-- [ ] Supabase 프로젝트 생성 (dev 환경)
-- [ ] 마이그레이션 파일 작성 & 실행
+- [x] Supabase 프로젝트 생성 (dev 환경)
+- [x] 마이그레이션 파일 작성 & 실행
   - `profiles` 테이블 (→ `technical-design.md` 3.2절)
   - `wardrobe_items` 테이블
   - `look_recreations` 테이블
   - `usage_counters` 테이블
-- [ ] RLS 정책 적용 (모든 테이블: `auth.uid() = user_id`)
-- [ ] profiles 자동 생성 트리거 (auth.users INSERT → profiles INSERT)
+- [x] RLS 정책 적용 (모든 테이블: `auth.uid() = user_id`)
+- [x] profiles 자동 생성 트리거 (auth.users INSERT → profiles INSERT)
 
 ### 1.3 Cloudflare R2 스토리지
 
-- [ ] `aura-dev` 버킷 생성
-- [ ] 경로 구조 설정: `/originals/`, `/processed/`, `/references/`
-- [ ] 서명 URL 생성 로직 (private 이미지용)
-- [ ] Public CDN 설정 (processed 이미지용)
+- [x] `aura-dev` 버킷 생성
+- [x] 경로 구조 설정: `/originals/`, `/processed/`, `/references/`
+- [x] 서명 URL 생성 로직 (private 이미지용)
+- [x] Public CDN 설정 (processed 이미지용)
 
 ### 1.4 Edge Functions 기본 구조
 
-- [ ] `_shared/` 공유 유틸리티 생성
+- [x] `_shared/` 공유 유틸리티 생성
   - `cors.ts`, `auth.ts`, `r2-client.ts`, `types.ts`
-- [ ] 헬스체크 엔드포인트 (`GET /health`)
-- [ ] Flutter ↔ Edge Function 통신 확인
+- [x] 헬스체크 엔드포인트 (`GET /health`)
+- [x] Flutter ↔ Edge Function 통신 확인
 
 ### 1.5 CI/CD & 개발 환경
 
-- [ ] GitHub 리포지토리 생성
-- [ ] GitHub Actions: Flutter 빌드 + 린트 체크
-- [ ] Sentry 연동 (Flutter + Edge Functions)
-- [ ] 환경 변수 관리 (Supabase Secrets)
+- [x] GitHub 리포지토리 생성
+- [x] GitHub Actions: Flutter 빌드 + 린트 체크
+- [x] Sentry 연동 (Flutter + Edge Functions)
+- [x] 환경 변수 관리 (Supabase Secrets)
 
 ### 1.6 얼리버드 랜딩페이지
 

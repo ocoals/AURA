@@ -135,14 +135,17 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 2.3 소셜 로그인
 
-- [ ] #6 로그인 화면: bgSoft + Lobster 56px "Aura" + "STYLE REIMAGINED"
+- [x] #6 로그인 화면: bgSoft + Lobster 56px "Aura" + "STYLE REIMAGINED"
+- [x] 이메일 로그인 (`supabase.auth.signInWithPassword`)
+- [x] 이메일 회원가입 (`supabase.auth.signUp`) + 비밀번호 확인
+- [x] 회원가입 화면: 글래스 폼 + CTA 버튼 + 로그인 링크
 - [ ] 카카오 OAuth 연동 (`supabase.auth.signInWithOAuth({ provider: 'kakao' })`)
   - 카카오 개발자 앱 등록, 리다이렉트 URI 설정
   - 버튼: #FEE500 배경, 텍스트 #1A1A1A
 - [ ] Apple 로그인 연동 (`supabase.auth.signInWithOAuth({ provider: 'apple' })`)
   - Apple Developer 설정, Sign in with Apple capability
   - 버튼: #000 배경, 텍스트 #fff
-- [ ] 법적 고지 텍스트 (11px, mute) — 개인정보처리방침, 이용약관 링크
+- [x] 법적 고지 텍스트 (11px, mute) — 개인정보처리방침, 이용약관 링크
 
 ### 2.4 프로필 자동 생성
 

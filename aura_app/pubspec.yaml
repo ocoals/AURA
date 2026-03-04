@@ -32,6 +32,9 @@ dependencies:
   # Fonts
   google_fonts: ^6.2.1
 
+  # URL Launcher
+  url_launcher: ^6.3.1
+
   # Environment
   flutter_dotenv: ^5.2.1
 

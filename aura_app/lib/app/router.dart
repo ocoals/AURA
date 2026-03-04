@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 
+import '../features/auth/login_screen.dart';
+import '../features/auth/signup_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/onboarding/splash_screen.dart';
@@ -18,6 +20,14 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/onboarding',
       builder: (_, state) => const OnboardingScreen(),
+    ),
+    GoRoute(
+      path: '/login',
+      builder: (_, state) => const LoginScreen(),
+    ),
+    GoRoute(
+      path: '/signup',
+      builder: (_, state) => const SignupScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => ShellScreen(shell: shell),

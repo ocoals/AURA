@@ -54,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      context.go('/home');
+      context.push('/login');
     }
   }
 
@@ -66,7 +66,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _onSkip() {
-    context.go('/home');
+    context.push('/login');
   }
 
   @override

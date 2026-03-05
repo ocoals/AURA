@@ -149,8 +149,8 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 2.4 프로필 자동 생성
 
-- [ ] 로그인 성공 시 profiles 레코드 확인/생성
-- [ ] `onboarding_completed = false` 상태로 시작
+- [x] 로그인 성공 시 profiles 레코드 확인/생성
+- [x] `onboarding_completed = false` 상태로 시작
 - [ ] 온보딩 촬영 완료 후 `onboarding_completed = true`
 
 ### 2.5 라우팅 & 인증 상태 관리

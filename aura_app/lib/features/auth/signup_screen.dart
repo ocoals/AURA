@@ -11,6 +11,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/constants/app_gradients.dart';
 import '../../core/constants/app_typography.dart';
+import '../../app/router.dart';
 import '../../core/services/supabase_service.dart';
 import '../../shared/widgets/gradient_background.dart';
 
@@ -58,11 +59,21 @@ class _SignupScreenState extends State<SignupScreen> {
     setState(() => _loading = true);
 
     try {
+      authNotifier.suppressAuthEvents();
       await supabase.auth.signUp(email: email, password: password);
-      // Auth state change triggers router redirect automatically
+      await supabase.auth.signOut();
+      authNotifier.resumeAuthEvents();
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('회원가입이 완료되었습니다. 로그인해주세요.')),
+        );
+        context.go('/login');
+      }
     } on AuthException catch (e) {
+      authNotifier.resumeAuthEvents();
       _showError(e.message);
     } catch (e) {
+      authNotifier.resumeAuthEvents();
       _showError('회원가입 중 오류가 발생했습니다.');
     } finally {
       if (mounted) setState(() => _loading = false);

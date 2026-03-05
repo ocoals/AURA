@@ -1,39 +1,52 @@
 import 'package:go_router/go_router.dart';
 
-import '../core/services/supabase_service.dart';
 import '../features/auth/login_screen.dart';
 import '../features/auth/providers/auth_provider.dart';
 import '../features/auth/signup_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/match/match_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/onboarding/photo_onboarding_screen.dart';
 import '../features/onboarding/splash_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/wardrobe/wardrobe_screen.dart';
 import 'shell_screen.dart';
 
-final _authNotifier = AuthNotifier();
+final authNotifier = AuthNotifier();
 
 final appRouter = GoRouter(
   initialLocation: '/splash',
-  refreshListenable: _authNotifier,
+  refreshListenable: authNotifier,
   redirect: (context, state) {
-    final session = supabase.auth.currentSession;
-    final isLoggedIn = session != null;
-    final currentPath = state.matchedLocation;
+    final status = authNotifier.status;
+    final path = state.matchedLocation;
 
     const publicPaths = ['/splash', '/onboarding', '/login', '/signup'];
-    final isPublicPage = publicPaths.contains(currentPath);
+    final isPublicPage = publicPaths.contains(path);
 
-    if (!isLoggedIn && !isPublicPage) {
-      return '/login';
+    switch (status) {
+      case AppAuthStatus.unknown:
+        // Stay on splash while checking session
+        if (path != '/splash') return '/splash';
+        return null;
+
+      case AppAuthStatus.unauthenticated:
+        // Leave splash once auth state is known
+        if (path == '/splash') return '/onboarding';
+        // Allow public pages, redirect others to login
+        if (isPublicPage) return null;
+        return '/login';
+
+      case AppAuthStatus.onboardingPending:
+        // Force to photo onboarding
+        if (path == '/photo-onboarding') return null;
+        return '/photo-onboarding';
+
+      case AppAuthStatus.ready:
+        // Redirect away from public/photo-onboarding pages to home
+        if (isPublicPage || path == '/photo-onboarding') return '/home';
+        return null;
     }
-
-    if (isLoggedIn && isPublicPage && currentPath != '/splash') {
-      return '/home';
-    }
-
-    return null;
   },
   routes: [
     GoRoute(
@@ -51,6 +64,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/signup',
       builder: (_, state) => const SignupScreen(),
+    ),
+    GoRoute(
+      path: '/photo-onboarding',
+      builder: (_, state) => const PhotoOnboardingScreen(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => ShellScreen(shell: shell),

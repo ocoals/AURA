@@ -155,12 +155,12 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 2.5 라우팅 & 인증 상태 관리
 
-- [ ] GoRouter 설정: 인증 상태에 따른 리다이렉트
+- [x] GoRouter 설정: 인증 상태에 따른 리다이렉트
   - 미인증 → 스플래시 → 온보딩 → 로그인
   - 인증 완료 + 온보딩 미완 → 촬영 유도
   - 인증 완료 + 온보딩 완료 → Home 탭
-- [ ] JWT 토큰 자동 갱신 (Supabase Flutter SDK)
-- [ ] 로그아웃 기능
+- [x] JWT 토큰 자동 갱신 (Supabase Flutter SDK)
+- [x] 로그아웃 기능
 
 ### Part 2 완료 기준
 

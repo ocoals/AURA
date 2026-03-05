@@ -1,10 +1,11 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-05T07:10:33.186Z",
+  "lastUpdated": "2026-03-05T14:10:56.107Z",
   "activeFeatures": [
     "_shared",
     "health",
-    ".claude"
+    ".claude",
+    "wardrobe-upload"
   ],
   "primaryFeature": "_shared",
   "features": {
@@ -17,7 +18,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-03T07:16:21.078Z",
-        "lastUpdated": "2026-03-03T07:16:39.977Z"
+        "lastUpdated": "2026-03-05T14:10:44.888Z"
       },
       "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/_shared/types.ts"
     },
@@ -46,6 +47,19 @@
         "lastUpdated": "2026-03-05T07:10:33.186Z"
       },
       "lastFile": "/Users/ochaemin/.claude/statusline.sh"
+    },
+    "wardrobe-upload": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-05T14:09:57.559Z",
+        "lastUpdated": "2026-03-05T14:10:56.107Z"
+      },
+      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/wardrobe-upload/index.ts"
     }
   },
   "pipeline": {
@@ -56,7 +70,7 @@
   "session": {
     "startedAt": "2026-03-02T15:01:14.196Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-05T07:10:33.186Z"
+    "lastActivity": "2026-03-05T14:10:56.107Z"
   },
   "history": [
     {
@@ -92,6 +106,78 @@
     {
       "timestamp": "2026-03-05T07:10:33.186Z",
       "feature": ".claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:09:00.547Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:09:13.299Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:09:21.392Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:09:25.685Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:09:57.559Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:11.782Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:16.338Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:22.123Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:29.669Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:44.888Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:51.977Z",
+      "feature": "wardrobe-upload",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-05T14:10:56.107Z",
+      "feature": "wardrobe-upload",
       "phase": "do",
       "action": "updated"
     }

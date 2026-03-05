@@ -178,7 +178,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 3.1 이미지 처리 파이프라인 (Edge Function)
 
-- [ ] `wardrobe-upload` Edge Function 구현
+- [x] `wardrobe-upload` Edge Function 구현
   - EXIF 회전 보정 + 리사이즈 (max 2048px, JPEG q85)
   - 배경 제거: remove.bg API (Primary) → HuggingFace rembg (Fallback)
   - K-Means 색상 추출 (k=3, 투명 픽셀 제외, 최대 클러스터 = 대표색)

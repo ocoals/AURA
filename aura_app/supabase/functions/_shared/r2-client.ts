@@ -72,7 +72,7 @@ export const r2Paths = {
   original: (userId: string, itemId: string) =>
     `originals/${userId}/${itemId}.jpg`,
   processed: (userId: string, itemId: string) =>
-    `processed/${userId}/${itemId}.webp`,
+    `processed/${userId}/${itemId}.png`,
   reference: (userId: string, recId: string) =>
     `references/${userId}/${recId}.jpg`,
   outfit: (userId: string, date: string) =>

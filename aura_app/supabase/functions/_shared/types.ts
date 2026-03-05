@@ -1,3 +1,5 @@
+import { corsHeaders } from "./cors.ts";
+
 /** 에러 코드 */
 export type ErrorCode =
   | "AUTH_REQUIRED"
@@ -60,6 +62,16 @@ export function errorResponse(
 ): Response {
   return new Response(JSON.stringify({ error: message, code }), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
+export function successResponse(
+  data: unknown,
+  status = 200
+): Response {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 }

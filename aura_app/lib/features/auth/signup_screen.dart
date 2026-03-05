@@ -59,7 +59,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
     try {
       await supabase.auth.signUp(email: email, password: password);
-      if (mounted) context.go('/home');
+      // Auth state change triggers router redirect automatically
     } on AuthException catch (e) {
       _showError(e.message);
     } catch (e) {
@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: SingleChildScrollView(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height,
+                  minHeight: MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom,
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(

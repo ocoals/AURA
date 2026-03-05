@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/app_colors.dart';
+import '../../core/services/supabase_service.dart';
 import '../../core/constants/app_gradients.dart';
 import '../../core/constants/app_typography.dart';
 import '../../shared/widgets/gradient_background.dart';
@@ -18,7 +19,12 @@ class SplashScreen extends StatelessWidget {
     // Navigate to home after 1 second
     Future.delayed(const Duration(seconds: 1), () {
       if (context.mounted) {
-        context.go('/onboarding');
+        final session = supabase.auth.currentSession;
+        if (session != null) {
+          context.go('/home');
+        } else {
+          context.go('/onboarding');
+        }
       }
     });
 

@@ -96,7 +96,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 - [x] Sentry 연동 (Flutter + Edge Functions)
 - [x] 환경 변수 관리 (Supabase Secrets)
 
-### 1.6 얼리버드 랜딩페이지
+### 1.6 얼리버드 랜딩페이지 (대략 출시 후 진행할 예정)
 
 - [ ] 단일 페이지 (Next.js 또는 정적 HTML)
 - [ ] 내용: 가치 제안 + 스크린샷 목업 + 이메일 수집

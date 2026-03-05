@@ -12,9 +12,9 @@ import '../features/profile/profile_screen.dart';
 import '../features/wardrobe/wardrobe_screen.dart';
 import 'shell_screen.dart';
 
-late final _authNotifier = AuthNotifier();
+final _authNotifier = AuthNotifier();
 
-late final appRouter = GoRouter(
+final appRouter = GoRouter(
   initialLocation: '/splash',
   refreshListenable: _authNotifier,
   redirect: (context, state) {

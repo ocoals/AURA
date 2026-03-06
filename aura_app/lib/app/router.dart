@@ -10,6 +10,7 @@ import '../features/onboarding/photo_onboarding_screen.dart';
 import '../features/onboarding/splash_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/wardrobe/wardrobe_screen.dart';
+import '../features/wardrobe/widgets/item_confirm_screen.dart';
 import 'shell_screen.dart';
 
 final authNotifier = AuthNotifier();
@@ -68,6 +69,11 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/photo-onboarding',
       builder: (_, state) => const PhotoOnboardingScreen(),
+    ),
+    GoRoute(
+      path: '/closet/add',
+      builder: (_, state) =>
+          ItemConfirmScreen(imagePath: state.extra! as String),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, shell) => ShellScreen(shell: shell),

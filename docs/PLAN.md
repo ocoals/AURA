@@ -210,11 +210,11 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 3.4 아이템 상세 & CRUD
 
-- [ ] 아이템 탭 → 상세 (서브 페이지)
+- [x] 아이템 탭 → 상세 (서브 페이지)
   - 이미지 + 모든 속성 표시
   - 수정 (`PATCH /wardrobe/items/:id`)
   - 삭제 확인 다이얼로그 → 소프트 삭제 (`DELETE /wardrobe/items/:id`)
-- [ ] 롱프레스 → 다중 선택 모드 → 일괄 삭제
+- [x] 롱프레스 → 다중 선택 모드 → 일괄 삭제
 
 ### 3.5 온보딩 촬영 흐름
 

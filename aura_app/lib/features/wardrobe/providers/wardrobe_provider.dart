@@ -64,11 +64,35 @@ class WardrobeListNotifier extends AsyncNotifier<List<WardrobeItem>> {
     state = AsyncData([item, ...current]);
   }
 
+  void updateItem(WardrobeItem updated) {
+    final current = state.valueOrNull ?? [];
+    state = AsyncData([
+      for (final item in current)
+        if (item.id == updated.id) updated else item,
+    ]);
+  }
+
+  void removeItem(String itemId) {
+    final current = state.valueOrNull ?? [];
+    state = AsyncData(current.where((i) => i.id != itemId).toList());
+  }
+
+  void removeItems(List<String> ids) {
+    final current = state.valueOrNull ?? [];
+    final idSet = ids.toSet();
+    state = AsyncData(current.where((i) => !idSet.contains(i.id)).toList());
+  }
+
   Future<void> refresh() async {
     state = const AsyncLoading();
     state = await AsyncValue.guard(_fetchFirst);
   }
 }
+
+// --- Multi-select ---
+
+final multiSelectModeProvider = StateProvider<bool>((ref) => false);
+final selectedItemIdsProvider = StateProvider<Set<String>>((ref) => {});
 
 // --- Upload ---
 

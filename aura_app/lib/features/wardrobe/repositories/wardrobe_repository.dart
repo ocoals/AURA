@@ -184,6 +184,161 @@ class WardrobeRepository {
     }
   }
 
+  Future<WardrobeItem> updateItem(
+    String itemId, {
+    String? category,
+    String? subcategory,
+    String? fit,
+    String? pattern,
+    String? brand,
+    List<String>? styleTags,
+    List<String>? season,
+  }) async {
+    final session = supabase.auth.currentSession;
+    if (session == null) throw const AuthRequiredException();
+
+    if (_useMock) {
+      debugPrint('[WardrobeRepository] Mock mode: simulating update...');
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      return WardrobeItem(
+        id: itemId,
+        userId: session.user.id,
+        imageUrl: 'https://placehold.co/400x600/png?text=MOCK',
+        category: category ?? 'tops',
+        subcategory: subcategory,
+        colorHex: '#2196F3',
+        colorName: 'Blue',
+        styleTags: styleTags ?? [],
+        fit: fit,
+        pattern: pattern,
+        brand: brand,
+        season: season ?? ['spring', 'summer', 'fall', 'winter'],
+        createdAt: DateTime.now(),
+        updatedAt: DateTime.now(),
+      );
+    }
+
+    final baseUrl = dotenv.env['SUPABASE_URL']!;
+    final url = Uri.parse('$baseUrl/functions/v1/wardrobe-items?id=$itemId');
+
+    final fields = <String, dynamic>{};
+    if (category != null) fields['category'] = category;
+    if (subcategory != null) fields['subcategory'] = subcategory;
+    if (fit != null) fields['fit'] = fit;
+    if (pattern != null) fields['pattern'] = pattern;
+    if (brand != null) fields['brand'] = brand;
+    if (styleTags != null) fields['style_tags'] = styleTags;
+    if (season != null) fields['season'] = season;
+
+    final http.Response response;
+    try {
+      response = await http.patch(
+        url,
+        headers: {
+          'Authorization': 'Bearer ${session.accessToken}',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(fields),
+      );
+    } on Exception catch (e) {
+      debugPrint('[WardrobeRepository] Network error: $e');
+      throw const NetworkException();
+    }
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      return WardrobeItem.fromJson(json);
+    }
+
+    debugPrint('[WardrobeRepository] HTTP ${response.statusCode}: ${response.body}');
+    _throwFromResponse(response.statusCode, response.body);
+  }
+
+  Future<void> deleteItem(String itemId) async {
+    final session = supabase.auth.currentSession;
+    if (session == null) throw const AuthRequiredException();
+
+    if (_useMock) {
+      debugPrint('[WardrobeRepository] Mock mode: simulating delete...');
+      await Future<void>.delayed(const Duration(milliseconds: 300));
+      return;
+    }
+
+    final baseUrl = dotenv.env['SUPABASE_URL']!;
+    final url = Uri.parse('$baseUrl/functions/v1/wardrobe-items?id=$itemId');
+
+    final http.Response response;
+    try {
+      response = await http.delete(
+        url,
+        headers: {'Authorization': 'Bearer ${session.accessToken}'},
+      );
+    } on Exception catch (e) {
+      debugPrint('[WardrobeRepository] Network error: $e');
+      throw const NetworkException();
+    }
+
+    if (response.statusCode == 200) return;
+
+    debugPrint('[WardrobeRepository] HTTP ${response.statusCode}: ${response.body}');
+    _throwFromResponse(response.statusCode, response.body);
+  }
+
+  Future<int> deleteItems(List<String> itemIds) async {
+    final session = supabase.auth.currentSession;
+    if (session == null) throw const AuthRequiredException();
+
+    if (_useMock) {
+      debugPrint('[WardrobeRepository] Mock mode: simulating bulk delete...');
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      return itemIds.length;
+    }
+
+    final baseUrl = dotenv.env['SUPABASE_URL']!;
+    final url = Uri.parse(
+      '$baseUrl/functions/v1/wardrobe-items?ids=${itemIds.join(",")}',
+    );
+
+    final http.Response response;
+    try {
+      response = await http.delete(
+        url,
+        headers: {'Authorization': 'Bearer ${session.accessToken}'},
+      );
+    } on Exception catch (e) {
+      debugPrint('[WardrobeRepository] Network error: $e');
+      throw const NetworkException();
+    }
+
+    if (response.statusCode == 200) {
+      final json = jsonDecode(response.body) as Map<String, dynamic>;
+      return json['deleted_count'] as int? ?? 0;
+    }
+
+    debugPrint('[WardrobeRepository] HTTP ${response.statusCode}: ${response.body}');
+    _throwFromResponse(response.statusCode, response.body);
+  }
+
+  Never _throwFromResponse(int status, String body) {
+    Map<String, dynamic>? errJson;
+    try {
+      errJson = jsonDecode(body) as Map<String, dynamic>;
+    } catch (_) {}
+
+    final code = errJson?['code'] as String? ?? '';
+    switch (code) {
+      case 'AUTH_REQUIRED':
+        throw const AuthRequiredException();
+      case 'NOT_FOUND':
+        throw NetworkException(errJson?['error'] as String? ?? '아이템을 찾을 수 없습니다.');
+      case 'RATE_LIMITED':
+        throw const RateLimitedException();
+      default:
+        final message = errJson?['error'] as String? ?? '요청에 실패했습니다. [$status]';
+        throw NetworkException(message);
+    }
+  }
+
   Future<WardrobeItem> _mockUpload({
     required String userId,
     required String category,

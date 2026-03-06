@@ -189,24 +189,24 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 3.2 아이템 등록 UI
 
-- [ ] FAB (+) 버튼 → OS 카메라 호출 (`image_picker`)
-- [ ] 촬영/갤러리 선택 후 → 로딩 (배경 제거 중 애니메이션)
-- [ ] 아이템 확인 화면
+- [x] FAB (+) 버튼 → OS 카메라 호출 (`image_picker`)
+- [x] 촬영/갤러리 선택 후 → 로딩 (배경 제거 중 애니메이션)
+- [x] 아이템 확인 화면
   - 배경 제거된 이미지 미리보기
   - 자동 추출된 색상 표시 (hex 컬러 원)
   - 카테고리 탭 선택 UI (상의/하의/아우터/원피스/신발/가방/액세서리)
   - 선택 속성: subcategory, style_tags, fit, pattern, brand, season
-- [ ] 저장 → 옷장 목록으로 복귀
+- [x] 저장 → 옷장 목록으로 복귀
 
 ### 3.3 옷장 목록 (Closet 탭 #8)
 
-- [ ] 헤더: "Closet" Lobster 32px + "N벌의 옷이 있어요"
-- [ ] 카테고리 스토리 행 (원형 52x52, 가로 스크롤, 활성: primary 테두리)
-- [ ] Masonry 그리드 (2열, 교차 높이, 글래스 카드 radius 14px)
-- [ ] 배경 제거된 이미지 표시 (R2 CDN URL)
-- [ ] 필터: 카테고리 / 정렬: 최근 등록순, 착용 횟수순
-- [ ] 페이지네이션 (무한 스크롤, limit 20)
-- [ ] Pull-to-refresh
+- [x] 헤더: "Closet" Lobster 32px + "N벌의 옷이 있어요"
+- [x] 카테고리 스토리 행 (원형 52x52, 가로 스크롤, 활성: primary 테두리)
+- [x] Masonry 그리드 (2열, 교차 높이, 글래스 카드 radius 14px)
+- [x] 배경 제거된 이미지 표시 (R2 CDN URL)
+- [x] 필터: 카테고리 / 정렬: 최근 등록순, 착용 횟수순
+- [x] 페이지네이션 (무한 스크롤, limit 20)
+- [x] Pull-to-refresh
 
 ### 3.4 아이템 상세 & CRUD
 
@@ -225,12 +225,12 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 3.6 사용량 제한
 
-- [ ] 무료 30벌 한도 체크 (`usage_counters.wardrobe_count`)
+- [x] 무료 30벌 한도 체크 (`usage_counters.wardrobe_count`)
 - [ ] 한도 도달 시 에러 `WARDROBE_LIMIT_REACHED` → 프리미엄 모달 트리거 (Part 6)
 
 ### 3.7 빈 상태
 
-- [ ] 옷장 0개: "아직 옷장이 비어있어요" + "첫 번째 옷 등록하기" CTA
+- [x] 옷장 0개: "아직 옷장이 비어있어요" + "첫 번째 옷 등록하기" CTA
 
 ### Part 3 완료 기준
 

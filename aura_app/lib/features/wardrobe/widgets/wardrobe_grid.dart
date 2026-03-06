@@ -8,14 +8,56 @@ import '../../../shared/widgets/glass_card.dart';
 import '../models/wardrobe_constants.dart';
 import '../models/wardrobe_item.dart';
 
-class WardrobeGrid extends StatelessWidget {
-  const WardrobeGrid({super.key, required this.items});
+class WardrobeGrid extends StatefulWidget {
+  const WardrobeGrid({
+    super.key,
+    required this.items,
+    required this.onLoadMore,
+    this.hasMore = false,
+    this.isLoadingMore = false,
+  });
 
   final List<WardrobeItem> items;
+  final VoidCallback onLoadMore;
+  final bool hasMore;
+  final bool isLoadingMore;
+
+  @override
+  State<WardrobeGrid> createState() => _WardrobeGridState();
+}
+
+class _WardrobeGridState extends State<WardrobeGrid> {
+  final _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (!widget.hasMore || widget.isLoadingMore) return;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final current = _scrollController.offset;
+    if (current >= maxScroll - 200) {
+      widget.onLoadMore();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final totalCount = widget.items.length + (widget.isLoadingMore ? 1 : 0);
+
     return GridView.builder(
+      controller: _scrollController,
       padding: const EdgeInsets.fromLTRB(
         AppSpacing.headerHorizontal,
         0,
@@ -28,8 +70,25 @@ class WardrobeGrid extends StatelessWidget {
         crossAxisSpacing: 12,
         childAspectRatio: 0.72,
       ),
-      itemCount: items.length,
-      itemBuilder: (context, index) => _ItemCard(item: items[index]),
+      itemCount: totalCount,
+      itemBuilder: (context, index) {
+        if (index >= widget.items.length) {
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppColors.ter,
+                ),
+              ),
+            ),
+          );
+        }
+        return _ItemCard(item: widget.items[index]);
+      },
     );
   }
 }

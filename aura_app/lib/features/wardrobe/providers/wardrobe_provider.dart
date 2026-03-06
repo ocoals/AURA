@@ -20,13 +20,43 @@ final wardrobeListProvider =
 );
 
 class WardrobeListNotifier extends AsyncNotifier<List<WardrobeItem>> {
-  @override
-  Future<List<WardrobeItem>> build() => fetchItems();
+  static const _pageSize = 20;
+  bool _hasMore = true;
+  bool _isLoadingMore = false;
 
-  Future<List<WardrobeItem>> fetchItems() async {
+  bool get hasMore => _hasMore;
+  bool get isLoadingMore => _isLoadingMore;
+
+  @override
+  Future<List<WardrobeItem>> build() => _fetchFirst();
+
+  Future<List<WardrobeItem>> _fetchFirst() async {
+    _hasMore = true;
+    _isLoadingMore = false;
     final category = ref.read(selectedCategoryProvider);
     final repo = ref.read(wardrobeRepositoryProvider);
-    return repo.getItems(category: category?.key);
+    final items = await repo.getItems(category: category?.key, limit: _pageSize);
+    _hasMore = items.length >= _pageSize;
+    return items;
+  }
+
+  Future<void> loadMore() async {
+    if (_isLoadingMore || !_hasMore) return;
+    final current = state.valueOrNull ?? [];
+    _isLoadingMore = true;
+    state = AsyncData(current); // trigger rebuild to show loading
+
+    final category = ref.read(selectedCategoryProvider);
+    final repo = ref.read(wardrobeRepositoryProvider);
+    final more = await repo.getItems(
+      category: category?.key,
+      limit: _pageSize,
+      offset: current.length,
+    );
+
+    _hasMore = more.length >= _pageSize;
+    _isLoadingMore = false;
+    state = AsyncData([...current, ...more]);
   }
 
   void addItem(WardrobeItem item) {
@@ -36,7 +66,7 @@ class WardrobeListNotifier extends AsyncNotifier<List<WardrobeItem>> {
 
   Future<void> refresh() async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(fetchItems);
+    state = await AsyncValue.guard(_fetchFirst);
   }
 }
 

@@ -71,7 +71,17 @@ class WardrobeScreen extends ConsumerWidget {
                         onAdd: () => _showImageSourceSheet(context),
                       );
                     }
-                    return WardrobeGrid(items: items);
+                    final notifier = ref.read(wardrobeListProvider.notifier);
+                    return RefreshIndicator(
+                      color: AppColors.primary,
+                      onRefresh: () => notifier.refresh(),
+                      child: WardrobeGrid(
+                        items: items,
+                        onLoadMore: () => notifier.loadMore(),
+                        hasMore: notifier.hasMore,
+                        isLoadingMore: notifier.isLoadingMore,
+                      ),
+                    );
                   },
                   loading: () => const Center(
                     child: CircularProgressIndicator(color: AppColors.primary),

@@ -226,7 +226,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 ### 3.6 사용량 제한
 
 - [x] 무료 30벌 한도 체크 (`usage_counters.wardrobe_count`)
-- [ ] 한도 도달 시 에러 `WARDROBE_LIMIT_REACHED` → 프리미엄 모달 트리거 (Part 6)
+- [ ] 한도 도달 시 에러 `WARDROBE_LIMIT_REACHED` → 프리미엄 모달 트리거 ( Part 6 )
 
 ### 3.7 빈 상태
 

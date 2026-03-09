@@ -151,7 +151,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 - [x] 로그인 성공 시 profiles 레코드 확인/생성
 - [x] `onboarding_completed = false` 상태로 시작
-- [ ] 온보딩 촬영 완료 후 `onboarding_completed = true`
+- [x] 온보딩 촬영 완료 후 `onboarding_completed = true`
 
 ### 2.5 라우팅 & 인증 상태 관리
 
@@ -218,10 +218,10 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 3.5 온보딩 촬영 흐름
 
-- [ ] 가입 직후 "첫 번째 옷을 등록해볼까요?" 촬영 유도 (→ `content-copy.md`)
-- [ ] 전신 사진 1장 → 배경 제거 → 아이템 분리 → 카테고리 탭 → 저장
-- [ ] 완료 후 `onboarding_completed = true`
-- [ ] 추가 유도: "3벌 이상 등록하면 재현이 더 정확해져요"
+- [x] 가입 직후 "첫 번째 옷을 등록해볼까요?" 촬영 유도 (→ `content-copy.md`)
+- [x] 전신 사진 1장 → 배경 제거 → 아이템 분리 → 카테고리 탭 → 저장
+- [x] 완료 후 `onboarding_completed = true`
+- [x] 추가 유도: "3벌 이상 등록하면 재현이 더 정확해져요"
 
 ### 3.6 사용량 제한
 

@@ -41,8 +41,8 @@ final appRouter = GoRouter(
         return '/login';
 
       case AppAuthStatus.onboardingPending:
-        // Force to photo onboarding
-        if (path == '/photo-onboarding') return null;
+        // Force to photo onboarding, but allow /closet/add for item registration
+        if (path == '/photo-onboarding' || path == '/closet/add') return null;
         return '/photo-onboarding';
 
       case AppAuthStatus.ready:
@@ -74,8 +74,17 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       path: '/closet/add',
-      builder: (_, state) =>
-          ItemConfirmScreen(imagePath: state.extra! as String),
+      builder: (_, state) {
+        final extra = state.extra;
+        if (extra is String) {
+          return ItemConfirmScreen(imagePath: extra);
+        }
+        final map = extra! as Map<String, dynamic>;
+        return ItemConfirmScreen(
+          imagePath: map['imagePath'] as String,
+          isOnboarding: map['isOnboarding'] as bool? ?? false,
+        );
+      },
     ),
     GoRoute(
       path: '/closet/detail',

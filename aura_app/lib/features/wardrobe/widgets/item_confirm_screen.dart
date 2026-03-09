@@ -15,9 +15,14 @@ import '../providers/wardrobe_provider.dart';
 import 'category_selector.dart';
 
 class ItemConfirmScreen extends ConsumerStatefulWidget {
-  const ItemConfirmScreen({super.key, required this.imagePath});
+  const ItemConfirmScreen({
+    super.key,
+    required this.imagePath,
+    this.isOnboarding = false,
+  });
 
   final String imagePath;
+  final bool isOnboarding;
 
   @override
   ConsumerState<ItemConfirmScreen> createState() => _ItemConfirmScreenState();
@@ -79,7 +84,7 @@ class _ItemConfirmScreenState extends ConsumerState<ItemConfirmScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('아이템이 등록되었습니다!')),
         );
-        context.pop();
+        context.pop(true);
       } else if (next.hasError) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(next.error.toString())),
@@ -92,7 +97,10 @@ class _ItemConfirmScreenState extends ConsumerState<ItemConfirmScreen> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('아이템 등록', style: AppTypography.sectionTitle),
+          title: Text(
+            widget.isOnboarding ? '이 옷이 맞나요?' : '아이템 등록',
+            style: AppTypography.sectionTitle,
+          ),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios_new, size: 20),
             onPressed: () => context.pop(),
@@ -285,7 +293,7 @@ class _ItemConfirmScreenState extends ConsumerState<ItemConfirmScreen> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    '저장하기',
+                    widget.isOnboarding ? '맞아요, 저장!' : '저장하기',
                     style: AppTypography.bodyMedium
                         .copyWith(color: AppColors.white),
                   ),

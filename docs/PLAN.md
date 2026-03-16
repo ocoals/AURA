@@ -263,7 +263,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 4.2 매칭 엔진 (Edge Function)
 
-- [ ] `_shared/matching-engine.ts` 구현
+- [x] `_shared/matching-engine.ts` 구현
   - 점수 계산: 카테고리(40) + 색상(30) + 스타일(20) + 보너스(10)
   - `_shared/color-utils.ts` — CIEDE2000 색차 계산
   - 매칭 프로세스: 카테고리 필터 → 중복 제외 → 점수 계산 → 최고 점수 선택

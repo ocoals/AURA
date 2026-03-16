@@ -14,13 +14,13 @@ const RETRY_DELAYS = [1000, 2000];
 
 // --- Types ---
 
-interface AnalyzedItemColor {
+export interface AnalyzedItemColor {
   hex: string;
   name: string;
   hsl: { h: number; s: number; l: number };
 }
 
-interface AnalyzedItem {
+export interface AnalyzedItem {
   index: number;
   category: string;
   subcategory: string;

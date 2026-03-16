@@ -249,15 +249,15 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 4.1 Claude Haiku API 연동 (Edge Function)
 
-- [ ] `_shared/claude-client.ts` — API 래퍼
+- [x] `_shared/claude-client.ts` — API 래퍼
   - 모델: `claude-haiku-4-5-20251001`
   - max_tokens: 1024
   - 타임아웃: 10초
   - 재시도: 최대 2회 (1초, 2초 대기)
-- [ ] 프롬프트 구현 (→ `technical-design.md` 5.2절)
+- [x] 프롬프트 구현 (→ `technical-design.md` 5.2절)
   - 이미지(base64) + 패션 아이템 분석 지시
   - JSON 출력 강제 (items, overall_style, occasion)
-- [ ] 응답 검증
+- [x] 응답 검증
   - JSON 파싱, items 배열 존재, category 허용 목록, HSL 범위
   - 검증 실패 시 재시도
 

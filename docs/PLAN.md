@@ -271,7 +271,7 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 4.3 `recreate-analyze` 핵심 API
 
-- [ ] `POST /recreate/analyze` (→ `technical-design.md` 4.5절)
+- [x] `POST /recreate/analyze` (→ `technical-design.md` 4.5절)
   - 레퍼런스 이미지 수신 → R2 저장
   - Claude Haiku 호출 → 아이템 분석 JSON
   - 매칭 엔진 실행 → matched_items + gap_items

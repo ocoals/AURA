@@ -281,12 +281,12 @@ Part 1 → Part 2 → Part 3 → Part 4 → Part 5 → Part 6 → Part 7 → Par
 
 ### 4.4 갭 분석 & 딥링크
 
-- [ ] 갭 아이템별 딥링크 생성
+- [x] 갭 아이템별 딥링크 생성
   - 무신사: `https://www.musinsa.com/search/musinsa/goods?q={keywords}`
   - 에이블리: `https://m.a-bly.com/search?keyword={keywords}`
   - 지그재그: `https://zigzag.kr/search?keyword={keywords}`
   - keywords = "{색상명} {subcategory}" (예: "브라운 로퍼")
-- [ ] 앱 미설치 시 웹 URL 폴백
+- [x] 앱 미설치 시 웹 URL 폴백
 
 ### 4.5 Match 탭 UI
 

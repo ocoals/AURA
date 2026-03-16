@@ -1,12 +1,13 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-03-06T09:48:24.311Z",
+  "lastUpdated": "2026-03-16T06:57:22.241Z",
   "activeFeatures": [
     "_shared",
     "health",
     ".claude",
     "wardrobe-upload",
-    "wardrobe-items"
+    "wardrobe-items",
+    "recreate-analyze"
   ],
   "primaryFeature": "_shared",
   "features": {
@@ -19,9 +20,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-03-03T07:16:21.078Z",
-        "lastUpdated": "2026-03-05T14:10:44.888Z"
+        "lastUpdated": "2026-03-16T06:36:57.998Z"
       },
-      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/_shared/types.ts"
+      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/_shared/test-matching.ts"
     },
     "health": {
       "phase": "do",
@@ -74,6 +75,19 @@
         "lastUpdated": "2026-03-06T09:48:24.311Z"
       },
       "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/wardrobe-items/index.ts"
+    },
+    "recreate-analyze": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-16T06:57:22.241Z",
+        "lastUpdated": "2026-03-16T06:57:22.241Z"
+      },
+      "lastFile": "/Users/ochaemin/dev/AURA/aura_app/supabase/functions/recreate-analyze/index.ts"
     }
   },
   "pipeline": {
@@ -84,7 +98,7 @@
   "session": {
     "startedAt": "2026-03-02T15:01:14.196Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-03-06T09:48:24.311Z"
+    "lastActivity": "2026-03-16T06:57:22.241Z"
   },
   "history": [
     {
@@ -198,6 +212,48 @@
     {
       "timestamp": "2026-03-06T09:48:24.311Z",
       "feature": "wardrobe-items",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:34:38.634Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:34:44.575Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:34:45.199Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:35:23.734Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:35:55.315Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:36:57.998Z",
+      "feature": "_shared",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-16T06:57:22.241Z",
+      "feature": "recreate-analyze",
       "phase": "do",
       "action": "updated"
     }

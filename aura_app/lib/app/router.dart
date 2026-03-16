@@ -4,7 +4,9 @@ import '../features/auth/login_screen.dart';
 import '../features/auth/providers/auth_provider.dart';
 import '../features/auth/signup_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/match/match_result_screen.dart';
 import '../features/match/match_screen.dart';
+import '../features/match/models/match_result.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/onboarding/photo_onboarding_screen.dart';
 import '../features/onboarding/splash_screen.dart';
@@ -104,7 +106,17 @@ final appRouter = GoRouter(
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
-              path: '/match', builder: (_, state) => const MatchScreen()),
+            path: '/match',
+            builder: (_, state) => const MatchScreen(),
+            routes: [
+              GoRoute(
+                path: 'result',
+                builder: (_, state) => MatchResultScreen(
+                  result: state.extra! as MatchResult,
+                ),
+              ),
+            ],
+          ),
         ]),
         StatefulShellBranch(routes: [
           GoRoute(
